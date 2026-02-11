@@ -1,0 +1,961 @@
+/* Mobile Optimizations - Consolidating here for cleaner architecture */
+@media (max-width: 768px) {
+
+  /* Simplify animations for performance */
+  .animate-twinkle,
+  .animate-twinkle-slow,
+  .animate-nebula-drift,
+  .animate-nebula-breathe,
+  .animate-galaxy-pulse,
+  .animate-shooting-star,
+  .animate-star-glow,
+  .animate-aurora-wave,
+  .animate-cosmic-float {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Disable heavy gradients and blurs */
+  .shimmer-container-aura,
+  .shimmer-gradient-aura,
+  .bottom-glow-aura {
+    display: none !important;
+  }
+
+  /* Simplify Aura Button */
+  .aura-button {
+    background-color: #10b981 !important;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Performance Upgrades */
+@layer utilities {
+  .section-container {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Supreme Dark Theme - Primary Black Background */
+    --background: 240 10% 3.9%;
+    /* Rich Black */
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    /* Slightly lighter black for cards */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 160 84% 39%;
+    /* Emerald Green */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 20%;
+    --input: 240 4% 20%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.5rem;
+
+    /* Supreme Design System */
+    --gradient-hero: linear-gradient(135deg, hsl(240, 10%, 4%), hsl(160, 60%, 15%));
+    --gradient-warm: linear-gradient(135deg, hsl(160, 84%, 39%), hsl(0, 0%, 100%));
+    --gradient-elegant: linear-gradient(to bottom, hsl(240, 10%, 3.9%), hsl(240, 10%, 8%));
+    --gradient-supreme: linear-gradient(135deg, hsl(240, 10%, 2%), hsl(160, 100%, 5%), hsl(240, 10%, 2%));
+
+    /* Brand specific colors using HSL */
+    --brand-name: 162 82% 40%;
+
+    /* Enhanced Glow Shadows for Dark Mode */
+    --shadow-soft: 0 2px 20px -5px rgba(16, 185, 129, 0.1);
+    --shadow-medium: 0 10px 40px -10px rgba(16, 185, 129, 0.2);
+    --shadow-large: 0 20px 60px -15px rgba(16, 185, 129, 0.3);
+    --shadow-glow: 0 0 50px rgba(16, 185, 129, 0.25), 0 0 100px rgba(16, 185, 129, 0.1);
+
+    /* Smooth Scrolling */
+    scroll-behavior: smooth;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 20%;
+    --input: 240 4% 20%;
+    --ring: 160 84% 39%;
+
+    /* Dark mode custom styles */
+    --gradient-hero: linear-gradient(135deg, hsl(240, 10%, 4%), hsl(160, 60%, 15%));
+    --gradient-warm: linear-gradient(135deg, hsl(160, 84%, 39%), hsl(0, 0%, 100%));
+    --gradient-elegant: linear-gradient(to bottom, hsl(240, 10%, 3.9%), hsl(240, 10%, 8%));
+
+    --shadow-soft: 0 2px 20px -5px rgba(16, 185, 129, 0.1);
+    --shadow-medium: 0 10px 40px -10px rgba(16, 185, 129, 0.2);
+    --shadow-large: 0 20px 60px -15px rgba(16, 185, 129, 0.3);
+    --shadow-glow: 0 0 50px rgba(16, 185, 129, 0.25), 0 0 100px rgba(16, 185, 129, 0.1);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  @property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 11.14%;
+    inherits: false;
+  }
+
+  @property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+  }
+
+  @property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+  }
+
+  @property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180.06%;
+    inherits: false;
+  }
+
+  @property --color-1 {
+    syntax: '<color>';
+    initial-value: #000;
+    inherits: false;
+  }
+
+  @property --color-2 {
+    syntax: '<color>';
+    initial-value: #064e3b;
+    inherits: false;
+  }
+
+  @property --color-3 {
+    syntax: '<color>';
+    initial-value: #065f46;
+    inherits: false;
+  }
+
+  @property --color-4 {
+    syntax: '<color>';
+    initial-value: #047857;
+    inherits: false;
+  }
+
+  @property --color-5 {
+    syntax: '<color>';
+    initial-value: #10b981;
+    inherits: false;
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 20deg;
+    inherits: true;
+  }
+
+  @property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(160, 75%, 60%, 0.2);
+    inherits: true;
+  }
+
+  @property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(160, 75%, 40%, 0.75);
+    inherits: true;
+  }
+
+  @property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 37.35%;
+    inherits: false;
+  }
+
+  @property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 61.36%;
+    inherits: false;
+  }
+
+  @property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 78.42%;
+    inherits: false;
+  }
+
+  @property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 89.52%;
+    inherits: false;
+  }
+
+  @property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
+  }
+
+  @property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @property --gradient-angle-offset {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @property --gradient-percent {
+    syntax: "<percentage>";
+    initial-value: 5%;
+    inherits: false;
+  }
+
+  @property --gradient-shine {
+    syntax: "<color>";
+    initial-value: white;
+    inherits: false;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+
+  /* Hide elements initially to prevent Flash of Unstyled Content (FOUC) - REMOVED to fix site-wide visibility issues */
+  /* .gsap-reveal-text, .gsap-reveal-pill, ... { visibility: hidden; } */
+
+  .hero-cta-animated-gradient {
+    background-size: 200% 200%;
+    animation: hero-gradient-move 3s ease-in-out infinite alternate;
+  }
+
+  .gradient-button {
+    @apply relative appearance-none cursor-pointer;
+    background: radial-gradient(var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+        var(--color-1) var(--stop-1),
+        var(--color-2) var(--stop-2),
+        var(--color-3) var(--stop-3),
+        var(--color-4) var(--stop-4),
+        var(--color-5) var(--stop-5));
+    transition:
+      --pos-x 0.5s,
+      --pos-y 0.5s,
+      --spread-x 0.5s,
+      --spread-y 0.5s,
+      --color-1 0.5s,
+      --color-2 0.5s,
+      --color-3 0.5s,
+      --color-4 0.5s,
+      --color-5 0.5s,
+      --border-angle 0.5s,
+      --border-color-1 0.5s,
+      --border-color-2 0.5s,
+      --stop-1 0.5s,
+      --stop-2 0.5s,
+      --stop-3 0.5s,
+      --stop-4 0.5s,
+      --stop-5 0.5s;
+  }
+
+  .gradient-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(var(--border-angle),
+        var(--border-color-1),
+        var(--border-color-2));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .gradient-button:hover {
+    --pos-x: 0%;
+    --pos-y: 91.51%;
+    --spread-x: 120.24%;
+    --spread-y: 103.18%;
+    --color-1: #10b981;
+    --color-2: #34d399;
+    --color-3: #6ee7b7;
+    --color-4: #064e3b;
+    --color-5: #000;
+    --border-angle: 190deg;
+    --border-color-1: hsla(160, 78%, 90%, 0.1);
+    --border-color-2: hsla(160, 75%, 90%, 0.6);
+    --stop-1: 0%;
+    --stop-2: 8.8%;
+    --stop-3: 21.44%;
+    --stop-4: 71.34%;
+    --stop-5: 85.76%;
+  }
+
+  .gradient-button-variant {
+    --color-1: #064e3b;
+    --color-2: #0d9488;
+    --color-3: #2dd4bf;
+    --color-4: #ccfbf1;
+    --border-angle: 200deg;
+    --border-color-1: hsla(170, 75%, 90%, 0.6);
+    --border-color-2: hsla(170, 50%, 90%, 0.15);
+  }
+
+  .gradient-button-variant:hover {
+    --pos-x: 0%;
+    --pos-y: 95.51%;
+    --spread-x: 110.24%;
+    --spread-y: 110.2%;
+    --color-1: #134e4a;
+    --color-2: #ccfbf1;
+    --color-3: #2dd4bf;
+    --color-4: #0d9488;
+    --color-5: #000;
+    --stop-1: 0%;
+    --stop-2: 10%;
+    --stop-3: 35.44%;
+    --stop-4: 71.34%;
+    --stop-5: 90.76%;
+    --border-angle: 210deg;
+    --border-color-1: hsla(170, 75%, 90%, 0.2);
+    --border-color-2: hsla(170, 50%, 90%, 0.75);
+  }
+
+  .shiny-cta {
+    --shiny-cta-bg: #000000;
+    --shiny-cta-fg: #ffffff;
+    --shiny-cta-highlight: #10b981;
+    --shiny-cta-highlight-subtle: #34d399;
+
+    position: relative;
+    cursor: pointer;
+    padding: 1.25rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--shiny-cta-fg);
+    background: var(--shiny-cta-bg);
+    border-radius: 100px;
+    border: none;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  /* The Rotating Border Glow */
+  .shiny-cta::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(from 0deg,
+        transparent 0deg,
+        transparent 280deg,
+        var(--shiny-cta-highlight) 320deg,
+        var(--shiny-cta-highlight-subtle) 340deg,
+        var(--shiny-cta-highlight) 360deg);
+    border-radius: inherit;
+    animation: rotate-border 4s linear infinite;
+    z-index: -2;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Inner Glow Shadow */
+  .shiny-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(80% 100% at 50% 120%,
+        rgba(16, 185, 129, 0.2),
+        transparent);
+    z-index: -1;
+    transition: opacity 0.4s ease;
+  }
+
+  .shiny-cta span {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Hover States */
+  .shiny-cta:hover {
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.3);
+  }
+
+  .shiny-cta:hover::before {
+    opacity: 1;
+    animation-duration: 2s;
+  }
+
+  .shiny-cta:hover::after {
+    background: radial-gradient(100% 100% at 50% 50%,
+        rgba(16, 185, 129, 0.15),
+        transparent);
+  }
+
+  /* Light Sweep Animation on Hover */
+  .shiny-cta span::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(115deg,
+        transparent 45%,
+        rgba(255, 255, 255, 0.1) 48%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.1) 52%,
+        transparent 55%);
+    transform: rotate(-25deg);
+    transition: none;
+  }
+
+  .shiny-cta:hover span::after {
+    left: 150%;
+    transition: left 0.8s ease-in-out;
+  }
+
+  @keyframes rotate-border {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes breathe {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+  }
+}
+
+@keyframes hero-gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* === AURA BUTTON ANIMATIONS === */
+@keyframes rotate-gradient {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes borderBeamRotation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes shinery {
+
+  0%,
+  100% {
+    left: -20%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  48% {
+    left: 140%;
+    opacity: 1;
+  }
+
+  51% {
+    opacity: 0;
+  }
+}
+
+@keyframes scanner {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(400%);
+    opacity: 0;
+  }
+}
+
+/* === GALAXY ANIMATIONS === */
+
+/* Twinkling Stars */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes twinkle-slow {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Nebula Drift */
+@keyframes nebula-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(20px, -15px) rotate(2deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes nebula-breathe {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.25;
+    transform: scale(1.05);
+  }
+}
+
+/* Galaxy Core Pulse */
+@keyframes galaxy-pulse {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+    filter: blur(200px);
+  }
+
+  50% {
+    opacity: 0.35;
+    transform: scale(1.08);
+    filter: blur(180px);
+  }
+}
+
+/* Shooting Star */
+@keyframes shooting-star {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) translateY(100px);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(300px) translateY(-300px);
+  }
+}
+
+/* Star Glow */
+@keyframes star-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.3), 0 0 4px rgba(16, 185, 129, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(16, 185, 129, 0.4);
+  }
+}
+
+/* Aurora Wave */
+@keyframes aurora-wave {
+  0% {
+    transform: translateX(-5%) skewX(-5deg);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateX(5%) skewX(5deg);
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateX(-5%) skewX(-5deg);
+    opacity: 0.2;
+  }
+}
+
+/* Cosmic Dust Float */
+@keyframes cosmic-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.08;
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 0.15;
+  }
+}
+
+/* Utility Classes for Galaxy */
+@layer utilities {
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .animate-twinkle-slow {
+    animation: twinkle-slow 4s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .animate-nebula-drift {
+    animation: nebula-drift 30s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-nebula-breathe {
+    animation: nebula-breathe 8s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .animate-galaxy-pulse {
+    animation: galaxy-pulse 12s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .animate-shooting-star {
+    animation: shooting-star 8s ease-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .animate-star-glow {
+    animation: star-glow 3s ease-in-out infinite;
+  }
+
+  .animate-aurora-wave {
+    animation: aurora-wave 15s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .animate-cosmic-float {
+    animation: cosmic-float 12s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  /* Aura Button Utils */
+  .animate-scanner {
+    animation: scanner 3s linear infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+
+  .animate-data-stream {
+    animation: data-stream 4s linear infinite;
+  }
+
+  .shimmer-onda {
+    background: linear-gradient(10deg, #D1D2EA 12.81%, rgba(209, 210, 234, 0.00) 66.66%);
+    mix-blend-mode: overlay;
+    width: 90px;
+    height: 150%;
+    position: absolute;
+    top: -25%;
+    transform: translateX(-50%) skew(-25deg);
+    pointer-events: none;
+    animation: shinery 6s infinite ease-in-out;
+    z-index: 4;
+  }
+
+  /* Aura Button Specifics */
+  .aura-button {
+    --speed: 4s;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  .aura-button:hover {
+    --speed: 2.2s;
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.3);
+  }
+
+  .fundo-white {
+    position: absolute;
+    left: 5px;
+    width: 0%;
+    height: calc(100% - 10px);
+    background: #ffffff;
+    border-radius: 100px;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 6;
+    opacity: 0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
+  }
+
+  .aura-button:hover .fundo-white {
+    width: calc(100% - 10px);
+    opacity: 1;
+  }
+
+  .wrapper-icones {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #059669 0%, #064e3b 100%);
+    border-radius: 50%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 2px 8px rgba(6, 78, 59, 0.2);
+  }
+
+  .aura-button:hover .wrapper-icones {
+    left: calc(100% - 44px);
+  }
+
+  .texto-principal-aura {
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 1;
+    transform: translateX(12px);
+    z-index: 10;
+    color: #064e3b;
+    font-weight: 600;
+  }
+
+  .texto-hover-aura {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateX(25px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    color: #064e3b;
+    font-weight: 700;
+    z-index: 10;
+  }
+
+  .aura-button:hover .texto-principal-aura {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  .aura-button:hover .texto-hover-aura {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateX(-12px);
+  }
+
+  .shimmer-container-aura {
+    position: absolute;
+    inset: -200%;
+    width: 400%;
+    height: 400%;
+    animation: rotate-gradient var(--speed) linear infinite;
+  }
+
+  .shimmer-gradient-aura {
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 225deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 10%,
+        transparent 20%);
+  }
+
+  .bottom-glow-aura {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40%;
+    background: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+}
