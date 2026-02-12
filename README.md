@@ -4,10 +4,10 @@ A premium, modern, and highly interactive landing page designed for a profession
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg)](https://nutritionspecialist.netlify.app)
 
-## 🌐 Live Site
+##  Live Site
 You can visit the live application here: **[nutritionspecialist.netlify.app](https://nutritionspecialist.netlify.app)**
 
-## ✨ Features
+##  Features
 
 - **Premium Design**: A clean, modern aesthetic tailored for health and wellness professionals.
 - **Micro-Animations**: Smooth interactions powered by **Framer Motion** and **GSAP**.
@@ -31,7 +31,7 @@ You can visit the live application here: **[nutritionspecialist.netlify.app](htt
 - **UI Components**: [Radix UI](https://www.radix-ui.com/) (shadcn/ui)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -63,7 +63,7 @@ You can visit the live application here: **[nutritionspecialist.netlify.app](htt
    npm run build
    ```
 
-## 📄 License
+##  License
 
 This project is open-source and available under the MIT License.
 
