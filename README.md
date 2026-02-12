@@ -21,7 +21,7 @@ You can visit the live application here: **[nutritionspecialist.netlify.app](htt
   - **Contact**: Integrated contact options for personalized consultations.
 - **Fast Performance**: Built with **Vite** for near-instant load times.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework**: [React 18](https://reactjs.org/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
